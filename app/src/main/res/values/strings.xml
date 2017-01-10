@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LearniApp</string>
+    <string name="msjSolicitarPermiso">Se necesita ceder el permiso para que la aplicación funcione</string>
+    <string name="msjInfoPermiso">Puede activar manualmente el permiso desde la configuracion de su dispositivo.</string>
 </resources>
