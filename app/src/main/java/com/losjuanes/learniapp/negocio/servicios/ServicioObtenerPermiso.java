@@ -7,11 +7,12 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
+import com.losjuanes.learniapp.negocio.Negocio;
 import com.losjuanes.learniapp.presentacion.vistas.CuadrosDeDialogo;
 import com.losjuanes.learniapp.servicios.gps.Gps;
 import com.losjuanes.learniapp.servicios.gps.ImplementacionGps;
 
-public class ServicioObtenerPermiso implements ActivityCompat.OnRequestPermissionsResultCallback{
+public class ServicioObtenerPermiso implements Negocio,ActivityCompat.OnRequestPermissionsResultCallback{
     Gps gps = new ImplementacionGps();
 
     //Identificador para la solicitud del permiso ACCESS_FINE_LOCATION
@@ -22,7 +23,9 @@ public class ServicioObtenerPermiso implements ActivityCompat.OnRequestPermissio
     private static Activity activityInvocadora;
 
     /**
-     *Obtiene el permiso en caso de que la version de android del dispositivo sea Marshmallow o superior.
+     * Obtiene el permiso en caso de que la version de android del dispositivo sea Marshmallow o superior.
+     *
+     * @param activity, actividad que invoca el metodo.
      */
     public void obtenerPermiso(Activity activity) {
         activityInvocadora = activity;
@@ -35,10 +38,13 @@ public class ServicioObtenerPermiso implements ActivityCompat.OnRequestPermissio
     }
 
     /**
-     * Metodo de la interfaz ActivityCompat.OnRequestPermissionsResultCallback
-     * @param requestCode
-     * @param permissions
-     * @param grantResults
+     * Metodo de la interfaz ActivityCompat.OnRequestPermissionsResultCallback.
+     * Se obtiene la respuesta del usuario si acepto o no el permiso.
+     *
+     * @param requestCode, codigo del permiso que se solicito.
+     * @param permissions, contiene los permisos solicitados.
+     * @param grantResults, contiene los resultados de los permiso
+     *                      0 si el permiso fue dado, -1 en caso contrario.
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

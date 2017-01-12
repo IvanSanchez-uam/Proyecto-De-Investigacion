@@ -31,4 +31,6 @@ public class ImplementacionGps implements Gps {
     public int versionAndroidDispositivo(){
         return Build.VERSION.SDK_INT;
     }
+
+
 }
